@@ -7,11 +7,13 @@ import {
 } from '../types';
 
 interface IPropTypes {
-  categories: ICategory[];
+  categories: {
+    items: ICategory[],
+  };
 }
 
 export default function Home({ categories }: IPropTypes) {
-  console.log('categories', categories);
+  // console.log('categories', categories);
   return (
     <>
       <Head>
@@ -20,6 +22,13 @@ export default function Home({ categories }: IPropTypes) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+
+      {
+        categories.items.map(category => {
+          return <span>{category.attributes.Title}</span>
+        })
+      }
+
       <main >
         <h1 className="text-primary-dark">
           Welcome to Coders blog!
